@@ -26,12 +26,10 @@ batch_size = config.batch_size
 learning_rate = config.learning_rate
 checkpoint_path = "model_checkpoint.pt"
 
-# prepare dataset and dataloader
 transforms = ToTensor()
 dataset = VOCDataset(dataset_path, transforms)
 data_loader = DataLoader(dataset, batch_size=batch_size, shuffle=True, collate_fn=lambda x: tuple(zip(*x)))
 
-# load model and optimizer
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = get_model(num_classes).to(device)
 optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate, momentum=0.9, weight_decay=0.0005)
@@ -45,7 +43,6 @@ if checkpoint_path and torch.cuda.is_available():
     start_epoch = checkpoint["epoch"] + 1
     print(f"Resuming training from epoch {start_epoch}...")
 
-# training loop with tqdm and W&B logging
 for epoch in range(start_epoch, num_epochs):
     model.train()
     epoch_loss = 0
@@ -55,15 +52,12 @@ for epoch in range(start_epoch, num_epochs):
         images = [img.to(device) for img in images]
         targets = [{k: v.to(device) for k, v in t.items()} for t in targets]
         
-        # zero the gradients
         optimizer.zero_grad()
         
-        # forward pass
         loss_dict = model(images, targets)
         losses = sum(loss for loss in loss_dict.values())
         epoch_loss += losses.item()
         
-        # backward pass
         losses.backward()
         optimizer.step()
 
