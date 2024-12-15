@@ -9,8 +9,8 @@
 - **TFLite Export**: TensorFlow models can be exported to TFLite for deployment on lightweight devices.
 - **Comprehensive Tools**: Utilities for preprocessing, dataset generation, and model conversion between frameworks.
 
-## **Dataset**
-The dataset used in this project is hosted on **Hugging Face** and is accessible at the link below:
+## **Resources**
+The Resources used in this project is hosted on **Hugging Face** and is accessible at the links below:
 
 
 | **Resources**   | **Description**                                                                                                                                     |
