@@ -22,10 +22,16 @@ The dataset used in this project is hosted on **Hugging Face** and is accessible
 ## **Repository Structure**
 ```plaintext
 .
-├── pytorch/                      # PyTorch implementation
-├── tensorflow/                   # TensorFlow implementation
-├── models/                       # Pretrained and fine-tuned models
-├── datasets/                     # Dataset management and preprocessing scripts
+├── DOCS/                         # Repository documentation
+├── src_pytorch/                  # PyTorch implementation
+├── src_tf/                       # TensorFlow implementation
 ├── utils/                        # Utility scripts for model training and evaluation
 ├── README.md                     # Project overview
 └── requirements.txt              # Dependencies for the project
+```
+
+## Start Here
+Start by setting up your development environment:
+
+[Start Here](https://github.com/CapitalRobotics/ObjectDetecion/blob/main/DOCS/setup.md)
+
