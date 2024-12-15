@@ -1,0 +1,7 @@
+torch
+torchvision
+transformers
+git-lfs
+pytorch
+onnx
+onnx-tf

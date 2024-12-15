@@ -1,8 +1,7 @@
 #!/bin/bash
 
 DATASET_URL="https://huggingface.co/datasets/torinriley/FTCVision"
-
-TARGET_DIR="dataset"
+TARGET_DIR="../dataset"
 
 if ! command -v git-lfs &> /dev/null; then
     echo "git-lfs is not installed. Please install it and try again."
