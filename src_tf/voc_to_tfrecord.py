@@ -7,11 +7,9 @@ def create_tf_example(annotation_path, images_base_path, label_map):
     tree = ET.parse(annotation_path)
     root = tree.getroot()
 
-    # Extract basic file details
     filename = root.find('filename').text
-    class_name = root.find('object/name').text  # Assuming at least one object exists in the image
-    class_folder = class_name.lower()  # Match the class folder name format (e.g., red, blue, yellow)
-
+    class_name = root.find('object/name').text 
+    class_folder = class_name.lower() 
     img_path = os.path.join(images_base_path, class_folder, filename)
     if not os.path.exists(img_path):
         raise FileNotFoundError(f"Image file not found: {img_path}")
@@ -22,7 +20,6 @@ def create_tf_example(annotation_path, images_base_path, label_map):
     width = int(root.find('size/width').text)
     height = int(root.find('size/height').text)
 
-    # Get annotation details
     xmin = []
     ymin = []
     xmax = []
@@ -33,7 +30,7 @@ def create_tf_example(annotation_path, images_base_path, label_map):
     for obj in root.findall('object'):
         label = obj.find('name').text
         classes_text.append(label.encode('utf8'))
-        classes.append(label_map[label])  # Use label map for class ID
+        classes.append(label_map[label]) 
 
         bndbox = obj.find('bndbox')
         xmin.append(float(bndbox.find('xmin').text) / width)
@@ -41,7 +38,6 @@ def create_tf_example(annotation_path, images_base_path, label_map):
         xmax.append(float(bndbox.find('xmax').text) / width)
         ymax.append(float(bndbox.find('ymax').text) / height)
 
-    # Create a TF Example
     tf_example = tf.train.Example(features=tf.train.Features(feature={
         'image/height': dataset_util.int64_feature(height),
         'image/width': dataset_util.int64_feature(width),
@@ -74,7 +70,6 @@ def create_tf_record(output_path, annotations_dir, images_base_path, label_map):
 
 
 if __name__ == "__main__":
-    # Paths
     train_annotations_dir = "dataset/annotations/train"
     val_annotations_dir = "dataset/annotations/val"
     train_images_base_path = "dataset/Images/train"
@@ -82,14 +77,12 @@ if __name__ == "__main__":
     train_tfrecord_path = "dataset/annotations/train.tfrecord"
     val_tfrecord_path = "dataset/annotations/val.tfrecord"
 
-    # Label map (modify based on your dataset)
     label_map = {
         'red': 1,
         'blue': 2,
         'yellow': 3
     }
 
-    # Generate TFRecords
     print("Generating Train TFRecord...")
     create_tf_record(train_tfrecord_path, train_annotations_dir, train_images_base_path, label_map)
 
