@@ -37,4 +37,6 @@ Start by setting up your development environment:
 
 [Demo Notebook](https://github.com/CapitalRobotics/ObjectDetecion/blob/main/src_pytorch/demo.ipynb)
 
+[PyTorch Model Archetecture](https://huggingface.co/torinriley/FTCVision-PyTorch/blob/main/DOCS/Archetecture.md)
+
 
