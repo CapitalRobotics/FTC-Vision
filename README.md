@@ -34,4 +34,6 @@ The Resources used in this project is hosted on **Hugging Face** and is accessib
 Start by setting up your development environment:
 
 [Start Here](https://github.com/CapitalRobotics/ObjectDetecion/blob/main/DOCS/setup.md)
+[Demo Notebook](https://github.com/CapitalRobotics/ObjectDetecion/blob/main/src_pytorch/demo.ipynb)
+
 
