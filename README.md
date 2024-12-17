@@ -17,6 +17,8 @@ The Resources used in this project is hosted on **Hugging Face** and is accessib
 |---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
 | [FTC Vision](https://huggingface.co/datasets/torinriley/FTCVision) | Annotated dataset in VOC format, split into train/val with subdirectories for each class. Includes train/val TFRecord files and a label map. |
 | [FTC Vision - PyTorch](https://huggingface.co/torinriley/FTCVision-PyTorch) | PyTorch implementation of the FTC Vision model, including training scripts and model weights. |
+| [Training Docs](https://huggingface.co/torinriley/FTCVision-PyTorch/tree/main/DOCS) |  Complete documentation for training of the PyTorch implimentaiton of FTC Vision|
+
 
 
 ## **Repository Structure**
